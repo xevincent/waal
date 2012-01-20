@@ -7,7 +7,7 @@
   waal  means  *Wrapper for  Android  Adb  Logcat*.  It reformats  the
   android logcat into a pretty colorful output.
 
-  [[https://github.com/xevincent/waal/screenshot.jpeg]]
+  [[https://github.com/xevincent/waal/raw/master/screenshot.jpeg]]
 
 * Installation
   Download waal from GitHub
