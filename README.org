@@ -1,0 +1,33 @@
+#+TITLE:    waal Readme
+#+AUTHOR:   Xavier-Emmanuel VINCENT
+#+DATE:     2012-01-20
+#+STARTUP:  showall
+
+* Description
+  waal  means  *Wrapper for  Android  Adb  Logcat*.  It reformats  the
+  android logcat into a pretty colorful output.
+
+  [[https://github.com/xevincent/waal/screenshot.jpeg]]
+
+* Installation
+  Download waal from GitHub
+  : git clone https://github.com/xevincent/waal.git
+** Dependencies
+   waal is written in Perl. You need:
+   - libio-interactive-perl
+   - libterm-readkey-perl
+
+* Usage
+  In command line:
+  :  adb logcat [<option>] ... [<filter-spec>] ... | waal
+
+  waal is just a wrapper. Whatever the options and filters are, it will
+  reformat the output.
+** Tip
+   Add this in your =bashrc/zshrc/...=
+   : wal () {
+   :     adb logcat "$@" | waal
+   : }
+
+   and just use:
+   : wal [<logcat option>] ... [<logcat filter-spec>]
