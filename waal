@@ -149,17 +149,6 @@ $length{pid}      = 5;
 $length{priority} = 1;
 $length{tag}      = 23;
 $length{thread}   = 5;
-$length{brief}    = $length{priority} + $length{tag} + $length{pid};
-$length{process}  = $length{priority} + $length{tag} + $length{pid};
-$length{tag}      = $length{priority} + $length{tag};
-$length{thread}   = $length{priority} + $length{pid} + $length{thread};
-$length{time} =
-  $length{day} +
-  $length{hour} +
-  $length{month} +
-  $length{priority} +
-  $length{tag} +
-  $length{pid};
 
 # check if something is coming from STDIN.
 if ( is_interactive() ) {
@@ -183,7 +172,9 @@ else {
                 print color highlight($tag);
                 printf( " %23s ", $tag );
                 print color 'reset';
-                indent_message( $length{brief} + 4, $message );    # 4 spaces
+                indent_message(
+                    $length{pid} + $length{priority} + $length{tag} + 4,
+                    $message );    # 4 spaces
             }
             when (/$format{process}/o) {
                 my $priority = $1;
@@ -196,7 +187,9 @@ else {
                 print color highlight($pid);
                 printf( " %s ", $pid );
                 print color 'reset';
-                indent_message( $length{process} + 5, $message );    # 5 spaces
+                indent_message(
+                    $length{priority} + $length{tag} + $length{pid} + 5,
+                    $message );    # 5 spaces
             }
             when (/$format{tag}/o) {
                 my $priority = $1;
@@ -207,7 +200,8 @@ else {
                 print color highlight($tag);
                 printf( " %23s ", $tag );
                 print color 'reset';
-                indent_message( $length{tag} + 4, $message );        # 4 spaces
+                indent_message( $length{priority} + $length{tag} + 4,
+                    $message );    # 4 spaces
             }
             when (/$format{thread}/o) {
                 my $priority = $1;
@@ -220,7 +214,9 @@ else {
                 print color highlight($thread);
                 printf( " %5s ", $thread );
                 print color 'reset';
-                indent_message( $length{thread} + 5, $message );    # 5 spaces
+                indent_message(
+                    $length{priority} + $length{pid} + $length{thread} + 5,
+                    $message );    # 5 spaces
             }
             when (/$format{time}/o) {
                 my $month    = $1;
@@ -237,7 +233,16 @@ else {
                 print color highlight($tag);
                 printf( " %23s ", $tag );
                 print color 'reset';
-                indent_message( $length{time} + 7, $message );  # 6 spaces + '-'
+                indent_message(
+                    $length{pid} +
+                      $length{priority} +
+                      $length{day} +
+                      $length{month} +
+                      $length{hour} +
+                      $length{tag} +
+                      7,
+                    $message
+                );    # 6 spaces + '-'
             }
             when (/$format{long}/o) {
                 my $month    = $1;
