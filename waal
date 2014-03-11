@@ -64,6 +64,8 @@ $format{tag}     = qr/^([VDIWEF])\/(.*?):(.*)$/o;
 $format{thread}  = qr/^([VDIWEF])\(([ \d]{5}):([ \d]{5})\)(.*)$/o;
 $format{time} =
 qr/^(\d\d)-(\d\d) (\d\d:\d\d:\d\d\.\d\d\d) ([VDIWEF])\/(.*?)\(([ \d]{5})\):(.*)$/o;
+$format{threadtime} =
+qr/^(\d\d)-(\d\d) (\d\d:\d\d:\d\d\.\d\d\d) ([ \d]{5}) ([ \d]{5}) ([VDIWEF]) (.*?):(.*)$/o;
 $format{long} =
 qr/^\[ (\d\d)-(\d\d) (\d\d:\d\d:\d\d\.\d\d\d) ([ \d]{5}):([ \d]{5}) ([VDIWEF])\/(.*?) \]/o;
 
@@ -243,6 +245,35 @@ else {
                       7,
                     $message
                 );    # 6 spaces + '-'
+            }
+            when (/$format{threadtime}/o) {
+                my $month    = $1;
+                my $day      = $2;
+                my $hour     = $3;
+                my $pid      = $4;
+                my $thread   = $5;
+                my $priority = $6;
+                my $tag      = trim($7);
+                my $message  = $8;
+
+                printf( "%s ", $pid );
+                printf( "%s %s-%s %s ",
+                    colored( $priority, $priority{$priority} ),
+                    $day, $month, $hour );
+                print color highlight($tag);
+                printf( " %23s/%s", $tag, $thread );
+                print color 'reset';
+                indent_message(
+                    $length{pid} +
+                      $length{priority} +
+                      $length{day} +
+                      $length{month} +
+                      $length{hour} +
+                      $length{tag} +
+                      $length{thread} +
+                      7,
+                    $message
+                );    # 5 spaces + '-'
             }
             when (/$format{long}/o) {
                 my $month    = $1;
