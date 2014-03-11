@@ -61,11 +61,11 @@ my %format;
 $format{brief}   = qr/^([VDIWEF])\/(.*?)\(([ \d]{5})\):(.*)$/o;
 $format{process} = qr/^([VDIWEF])\(([ \d]{5})\)(.*?)  \((.*?)\)/o;
 $format{tag}     = qr/^([VDIWEF])\/(.*?):(.*)$/o;
-$format{thread}  = qr/^([VDIWEF])\(([ \d]{5}):(0x\w{3})\)(.*)$/o;
+$format{thread}  = qr/^([VDIWEF])\(([ \d]{5}):([ \d]{5})\)(.*)$/o;
 $format{time} =
 qr/^(\d\d)-(\d\d) (\d\d:\d\d:\d\d\.\d\d\d) ([VDIWEF])\/(.*?)\(([ \d]{5})\):(.*)$/o;
 $format{long} =
-qr/^\[ (\d\d)-(\d\d) (\d\d:\d\d:\d\d\.\d\d\d) ([ \d]{5}):(0x\w{3}) ([VDIWEF])\/(.*?) \]/o;
+qr/^\[ (\d\d)-(\d\d) (\d\d:\d\d:\d\d\.\d\d\d) ([ \d]{5}):([ \d]{5}) ([VDIWEF])\/(.*?) \]/o;
 
 my ($columns) = GetTerminalSize();
 my $SPACE = q{ };    # q{ } is the same as ' '.
