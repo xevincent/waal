@@ -1,6 +1,6 @@
 #+TITLE:    waal Readme
 #+AUTHOR:   Xavier-Emmanuel VINCENT
-#+DATE:     2012-01-20
+#+DATE:     2014-03-12
 #+STARTUP:  showall
 
 * Description
@@ -20,6 +20,9 @@
 * Usage
   In command line:
   :  adb logcat [<option>] ... [<filter-spec>] ... | waal
+
+  or
+  :  waal < my_file.log
 
   waal is just a wrapper. Whatever the options and filters are, it will
   reformat the output.

@@ -139,6 +139,7 @@ sub usage {
     print "$app_name $version ($app_full_name)\n";
     print "$copyright $author\n\n";
     print "Usage:  adb logcat [<option>] ... [<filter-spec>] ... | waal\n";
+    print "        waal < my_file.log\n";
 }
 
 # I define here the length of all items and I use it in the function indent_message.
