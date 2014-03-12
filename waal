@@ -3,7 +3,7 @@
 # waal - Wrapper for Android Adb Logcat reformating it into a pretty
 #        colorful output.
 
-# Copyright 2010 Xavier-Emmanuel VINCENT
+# Copyright 2010,2014 Xavier-Emmanuel VINCENT
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -33,9 +33,9 @@ use Term::ReadKey;
 
 my $app_name      = 'waal';
 my $app_full_name = 'Wrapper for Android Adb Logcat';
-my $version       = '1.0.0';
+my $version       = '1.1.0';
 my $author        = 'Xavier-Emmanuel VINCENT';
-my $copyright     = 'Copyright 2010';
+my $copyright     = 'Copyright 2014';
 
 # For any informations about color, see http://perldoc.perl.org/Term/ANSIColor.html
 # foreground = black red green yellow blue magenta cyan white
